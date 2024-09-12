@@ -1,1 +1,16 @@
 
+---
+title: "github_document"
+author: "Maggie Hsu"
+output: html_document
+date: "2024-09-12"
+---
+
+# Problem 1
+```{r problem 1}
+#Load the penguins dataset from the palmerpenguins package
+data("penguins", package = "palmerpenguins")
+```
+The dataset for this problem is "Penguins" from the "Palmer Penguins" package, with the variables `r names(penguins) `. There are `r nrow(penguins)` rows and `r ncol(penguins)` columns within the dataset. 
+
+Among the penguins in the dataset with known flipper lengths, the mean flipper length is `r mean(penguins$flipper_length_mm, na.rm = TRUE)` millimeters.
