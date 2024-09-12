@@ -7,10 +7,20 @@ date: "2024-09-12"
 ---
 
 # Problem 1
-```{r problem 1}
+```{r problem 1 load dataset}
 #Load the penguins dataset from the palmerpenguins package
 data("penguins", package = "palmerpenguins")
 ```
+## Data Description
 The dataset for this problem is "Penguins" from the "Palmer Penguins" package, with the variables `r names(penguins) `. There are `r nrow(penguins)` rows and `r ncol(penguins)` columns within the dataset. 
 
 Among the penguins in the dataset with known flipper lengths, the mean flipper length is `r mean(penguins$flipper_length_mm, na.rm = TRUE)` millimeters.
+
+## Scatterplot: Bill Length vs. Flipper Length
+```{r problem 1 scatterplot, warning=FALSE}
+#Create a scatterplot comparing bill length and flipper length in millimeters.
+library(ggplot2)
+scatter_bill_flipper <- ggplot(penguins, aes(x=bill_length_mm, y=flipper_length_mm, color=species))+geom_point()
+scatter_bill_flipper
+ggsave("penguin.png", scatter_bill_flipper) #Save and export the scatterplot as a PNG
+```
