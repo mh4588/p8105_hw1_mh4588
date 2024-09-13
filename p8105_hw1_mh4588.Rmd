@@ -41,8 +41,23 @@ mean_greater <- mean(greater_than_0)
 mean_chars <- mean(characters)
 mean_levels <- mean(levels)
 ```
-The means for the "normal sample" and "greater than 0" vectors both result in calculated, numeric values. However, the mean() command returns NA for characters and levels since these vectors do not contain numeric or logical variables.
+The means for the "normal sample" and "greater than 0" vectors both result in calculated, numeric values. However, the mean() command returns NA for the characters and level vectors since they do not contain numeric or logical variables.
 
 ```{r problem 2 numeric conversion}
-as.numeric
+#Convert the logical, character, and factor vectors into numeric vectors using the as.numeric function
+num_greater_than_0 <- as.numeric(greater_than_0)
+num_characters <- as.numeric(characters)
+num_levels <- as.numeric(levels)
+
+#Find the mean of each vector's variables.
+mean_num_greater <- mean(num_greater_than_0)
+mean_num_chars <- mean(num_characters)
+mean_num_levels <- mean(num_levels)
 ```
+```{r problem 2 converted means, echo=FALSE}
+#Print and display means after converting vectors to numeric types.
+mean_num_greater
+mean_num_chars 
+mean_num_levels 
+```
+For the "greater than" and level vectors, conversion with as.numeric() results in numeric variables and therefore a numeric mean. However, the character vector was unable to be converted using as.numeric(), resulting in an NA output after the mean function is applied. This explains the mean() command's outputs only working for numeric vectors and vectors with variables that can be converted or coerced into numeric types. 
