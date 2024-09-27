@@ -10,6 +10,10 @@ date: "2024-09-12"
 ```{r problem 1 load dataset}
 #Load the penguins dataset from the palmerpenguins package
 data("penguins", package = "palmerpenguins")
+
+#Load the tidyverse package for analyzing data
+library("tidyverse")
+
 ```
 ## Data Description
 The dataset for this problem is "Penguins" from the "Palmer Penguins" package, with the variables `r names(penguins) `. There are `r nrow(penguins)` rows and `r ncol(penguins)` columns within the dataset. 
@@ -19,27 +23,23 @@ Among the penguins in the dataset with known flipper lengths, the mean flipper l
 ## Scatterplot: Bill Length vs. Flipper Length
 ```{r problem 1 scatterplot, warning=FALSE}
 #Create a scatterplot comparing bill length and flipper length in millimeters.
-library(ggplot2)
 scatter_bill_flipper <- ggplot(penguins, aes(x=bill_length_mm, y=flipper_length_mm, color=species))+geom_point()
+
+#Display and save the penguin scatterplot. 
 scatter_bill_flipper
 ggsave("penguin.png", scatter_bill_flipper) #Save and export the scatterplot as a PNG
 ```
 
 # Problem 2
 ```{r problem 2 data frame}
-#Generate vectors
-normal_sample <- rnorm(10) #random sample from standard normal distribution
-greater_than_0 <- normal_sample > 0 #logical vector indicating if a given value in the sample is greater than 0
-characters <- c("a","b","c","d","e","f","g","h","i","j") #character vector with length 10
-levels <- as.factor(c(1,0,2,1,2,0,1,2,2,0)) #vector consisting of factors with length 10 and 3 levels
-
-dataframe_problem2 <- data.frame(normal_sample,greater_than_0,characters,levels)
-
-#Find the means of each vector
-mean_normal_sample <- mean(normal_sample)
-mean_greater <- mean(greater_than_0)
-mean_chars <- mean(characters)
-mean_levels <- mean(levels)
+## Set up a data frame consisting of the specified vectors
+dataframe_problem2 <- tibble(
+  #Generate vectors within the data frame
+  normal_sample <- rnorm(n=10), #A vector consisting of a random sample from a standard normal distribution
+  greater_than_0 <- normal_sample > 0, #A logical vector indicating if a given value in the sample is greater than 0
+  characters <- c("a","b","c","d","e","f","g","h","i","j"), #A character vector with length 10
+  levels <- as.factor(c(1,0,2,1,2,0,1,2,2,0)) #A vector consisting of factors with length 10 and 3 levels
+)
 ```
 The means for the "normal sample" and "greater than 0" vectors both result in calculated, numeric values. However, the mean() command returns NA for the characters and level vectors since they do not contain numeric or logical variables.
 
