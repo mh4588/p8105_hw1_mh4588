@@ -1,8 +1,8 @@
 
 ---
-title: "github_document"
+title: "P8105 HW1 - mh4588"
 author: "Maggie Hsu"
-output: html_document
+output: github_document
 date: "2024-09-12"
 ---
 
@@ -47,24 +47,26 @@ mean(pull(dataframe_problem2, var="greater_than_0")) #Mean for the "greater_than
 mean(pull(dataframe_problem2, var="characters")) #Mean for the "characters" vector
 mean(pull(dataframe_problem2, var="levels")) #Mean for the "levels" vector
 ```
-The means for the "normal sample" and "greater than 0" vectors both result in calculated, numeric values. However, the mean() command returns NA for the characters and level vectors since they do not contain numeric or logical variables.
+The means for the "normal sample" and "greater than 0" vectors both result in calculated, numeric values. However, the mean() command returns NA for the characters and level vectors since they do not contain numeric or logical variables. The warning specifies that NA values are returned if the mean argument does not have a numeric or logical type input. 
 
-```{r problem 2 numeric conversion}
+```{r problem 2 numeric conversion, echo=FALSE}
 #Convert the logical, character, and factor vectors into numeric vectors using the as.numeric function
-num_greater_than_0 <- as.numeric(greater_than_0)
-num_characters <- as.numeric(characters)
-num_levels <- as.numeric(levels)
+num_greater_than_0 <- as.numeric(pull(dataframe_problem2, var="greater_than_0")) #Convert the logical variable into numeric values.
+num_characters <- as.numeric(pull(dataframe_problem2, var="characters")) #Convert the character variable into numeric values.
+num_levels <- as.numeric(pull(dataframe_problem2, var="levels")) #Convert the factor variable into numeric values.
 
 #Find the mean of each vector's variables.
 mean_num_greater <- mean(num_greater_than_0)
 mean_num_chars <- mean(num_characters)
 mean_num_levels <- mean(num_levels)
-```
 
-```{r problem 2 converted means, echo=FALSE}
 #Print and display means after converting vectors to numeric types.
 mean_num_greater
 mean_num_chars 
 mean_num_levels 
 ```
-For the "greater than" and level vectors, conversion with as.numeric() results in numeric variables and therefore a numeric mean. However, the character vector was unable to be converted using as.numeric(), resulting in an NA output after the mean function is applied. This explains the mean() command's outputs only working for numeric vectors and vectors with variables that can be converted or coerced into numeric types. 
+For the "greater than" and factor vectors, conversion with as.numeric() results in numeric variables and a numeric mean. The logical values True and False are associated with 1 and 0 respectively while each level of the factor variable is associated with a different number, so as.numeric() converts these variables' values to the associated number.
+
+However, the character vector was unable to be converted using as.numeric() as the character variables do not have associated numeric values. This resulted in an NA output after the mean function is applied, even with as.numeric() being used on the character vector. 
+
+This explains how the mean() command's outputs only work for variables that are numeric, as it operates on numeric inputs, regardless of whether the variable is numeric or converted to numeric.
