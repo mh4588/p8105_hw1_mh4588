@@ -35,11 +35,17 @@ ggsave("penguin.png", scatter_bill_flipper) #Save and export the scatterplot as 
 ## Set up a data frame consisting of the specified vectors
 dataframe_problem2 <- tibble(
   #Generate vectors within the data frame
-  normal_sample <- rnorm(n=10), #A vector consisting of a random sample from a standard normal distribution
-  greater_than_0 <- normal_sample > 0, #A logical vector indicating if a given value in the sample is greater than 0
-  characters <- c("a","b","c","d","e","f","g","h","i","j"), #A character vector with length 10
-  levels <- as.factor(c(1,0,2,1,2,0,1,2,2,0)) #A vector consisting of factors with length 10 and 3 levels
+  normal_sample = rnorm(n=10), #A vector consisting of a random sample from a standard normal distribution
+  greater_than_0 = normal_sample > 0, #A logical vector indicating if a given value in the sample is greater than 0
+  characters = c("a","b","c","d","e","f","g","h","i","j"), #A character vector with length 10
+  levels = as.factor(c(1,0,2,1,2,0,1,2,2,0)) #A vector consisting of factors with length 10 and 3 levels
 )
+
+#Calculate the means for each variable within the dataframe
+mean(pull(dataframe_problem2, var="normal_sample")) #Mean of the "normal_sample" vector
+mean(pull(dataframe_problem2, var="greater_than_0")) #Mean for the "greater_than_0" vector
+mean(pull(dataframe_problem2, var="characters")) #Mean for the "characters" vector
+mean(pull(dataframe_problem2, var="levels")) #Mean for the "levels" vector
 ```
 The means for the "normal sample" and "greater than 0" vectors both result in calculated, numeric values. However, the mean() command returns NA for the characters and level vectors since they do not contain numeric or logical variables.
 
@@ -54,6 +60,7 @@ mean_num_greater <- mean(num_greater_than_0)
 mean_num_chars <- mean(num_characters)
 mean_num_levels <- mean(num_levels)
 ```
+
 ```{r problem 2 converted means, echo=FALSE}
 #Print and display means after converting vectors to numeric types.
 mean_num_greater
