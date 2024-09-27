@@ -3,7 +3,7 @@
 title: "P8105 HW1 - mh4588"
 author: "Maggie Hsu"
 output: github_document
-date: "2024-09-12"
+date: "`r Sys.Date()`"
 ---
 
 # Problem 1
@@ -49,7 +49,8 @@ mean(pull(dataframe_problem2, var="levels")) #Mean for the "levels" vector
 ```
 The means for the "normal sample" and "greater than 0" vectors both result in calculated, numeric values. However, the mean() command returns NA for the characters and level vectors since they do not contain numeric or logical variables. The warning specifies that NA values are returned if the mean argument does not have a numeric or logical type input. 
 
-```{r problem 2 numeric conversion, echo=FALSE}
+## Converting Variables to Numeric
+```{r problem 2 numeric conversion, results=FALSE}
 #Convert the logical, character, and factor vectors into numeric vectors using the as.numeric function
 num_greater_than_0 <- as.numeric(pull(dataframe_problem2, var="greater_than_0")) #Convert the logical variable into numeric values.
 num_characters <- as.numeric(pull(dataframe_problem2, var="characters")) #Convert the character variable into numeric values.
